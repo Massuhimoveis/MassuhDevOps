@@ -1,0 +1,49 @@
+/* Estilos para os controles de paginação */
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 20px;
+  margin-bottom: 4rem;
+}
+
+#pagination-controls button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--disabled-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#pagination-controls button.active,
+#pagination-controls button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+#recomendacao-pagination-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 20px;
+  margin-bottom: 4rem;
+  flex-direction: row !important;
+}
+
+#recomendacao-pagination-controls button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--disabled-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#recomendacao-pagination-controls button.active,
+#recomendacao-pagination-controls button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}

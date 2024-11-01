@@ -1,0 +1,112 @@
+.formularios {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  background-color: var(--disabled-color);
+  z-index: 8888;
+}
+
+.formulariosHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.closeFormularios {
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s;
+  font-size: 1.5rem;
+}
+
+.closeFormularios:hover {
+  color: var(--primary-color);
+}
+
+.formulariosContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 4rem);
+  padding: 2rem;
+  background-color: var(--background-color);
+  overflow-y: scroll;
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 12rem;
+  background-color: var(--background-color);
+}
+
+@media screen and (max-width: 768px) {
+  #formulario {
+    padding: 1rem;
+  }
+}
+
+/* New styles for radio buttons */
+.field-value label {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.field-value input[type="radio"] {
+  margin-right: 5px;
+}
+
+.field-value[data-index] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Styling for the radio buttons to make them more visually appealing */
+.field-value input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: var(--primary-color);
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid var(--primary-color);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+.field-value input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transition: transform 0.1s ease-in-out;
+  box-shadow: inset 1em 1em var(--primary-color);
+  transform: scale(0);
+}
+
+.field-value input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.field-value input[type="radio"]:disabled {
+  border-color: var(--disabled-color);
+}
+
+.field-value input[type="radio"]:disabled::before {
+  box-shadow: inset 1em 1em var(--disabled-color);
+}

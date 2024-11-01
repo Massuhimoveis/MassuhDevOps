@@ -1,0 +1,100 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items (logo and navigation) vertically */
+  padding: 0 20px; /* Adjust padding as needed */
+  height: auto; /* Set nav height */
+  max-height: 100px;
+  background-color: var(--background-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Vertically center the logo */
+  height: auto; /* Set nav height */
+  max-height: 100px;
+}
+
+.logo img {
+  width: auto; /* Maintain aspect ratio */
+  display: block;
+  height: auto; /* Set nav height */
+  max-height: 100px; /* Ensure the image doesn't have any gaps */
+  padding-left: 2rem;
+}
+
+nav > div {
+  width: auto;
+}
+
+nav div ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
+nav div ul li {
+  font-size: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 25%;
+}
+
+#themeToggle {
+  align-items: center;
+}
+
+nav div ul li:not(.active) {
+  cursor: pointer;
+}
+
+nav div ul li span,
+nav div ul li a {
+  color: var(--disabled-color);
+  transition: color 0.3s;
+}
+
+nav div ul li.active span {
+  color: var(--primary-color);
+}
+
+nav div ul li.active a {
+  color: var(--text-color);
+}
+
+nav div ul li:not(.active):hover span,
+nav div ul li:not(.active):hover a {
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    height: 3.5rem;
+  }
+  .logo {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+  .logo .material-icons {
+    font-size: 2rem;
+  }
+  nav div ul li {
+    width: 100%;
+  }
+  nav div ul li:nth-child(2),
+  nav div ul li:nth-child(3) {
+    display: none;
+  }
+}

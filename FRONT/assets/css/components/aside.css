@@ -1,0 +1,99 @@
+aside {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+}
+
+aside ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+aside ul li {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+aside ul li .material-icons,
+aside ul li a {
+  color: var(--disabled-color);
+  transition: color 0.3s;
+}
+
+aside ul li.active .material-icons,
+aside ul li.active a {
+  color: var(--text-color-active);
+  font-weight: bold;
+  background-color: var(--background-color-active);
+  border-left: 4px solid var(--border-color-active);
+  padding-left: 8px; /* To account for the border */
+}
+
+/* Base hover effect */
+aside ul li:not(.active):hover .material-icons,
+aside ul li:not(.active):hover a {
+  color: var(
+    --primary-color
+  ); /* Change the text and icon color on hover to red */
+  transition: color 0.3s ease-in-out; /* Smooth transition for the color change */
+}
+
+/* Add background color change on hover */
+aside ul li:not(.active):hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red background on hover */
+  border-radius: 8px; /* Rounded corners for a modern feel */
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth background and shadow transition */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect for depth */
+}
+
+/* Lift effect on hover for better UX */
+aside ul li:not(.active):hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for lift */
+}
+
+/* Active state with red background for better UX feedback */
+aside ul li.active {
+  background-color: var(
+    --primary-color
+  ); /* Red background for the active state */
+  color: white; /* White text for contrast */
+  border-radius: 8px; /* Keep the rounded corners */
+}
+
+/* Ensure the list items have padding for larger clickable areas */
+aside ul li {
+  padding: 10px 15px; /* Adds padding to increase the clickable area */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: padding 0.2s ease-in-out; /* Smooth transition for padding changes */
+}
+
+/* Ensure text and icons align properly */
+aside ul li a {
+  display: inline-block;
+  font-size: 1rem;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color for easy management */
+  transition: color 0.3s ease-in-out; /* Smooth color change on hover */
+}
+
+aside ul li .material-icons {
+  font-size: 24px; /* Adjust icon size */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+@media screen and (max-width: 480px) {
+  aside {
+    justify-content: center;
+  }
+  .active .material-icons {
+    color: var(--primary-color) !important;
+  }
+  aside li:not(.active) .material-icons,
+  aside li:not(.active) a {
+    color: #b0b0b0 !important;
+  }
+}

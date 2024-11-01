@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test buscarHTML</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function buscarHTML(data) {
+        const API_URL =
+          "https://api-gateway-us-central1-397xvf1t.uc.gateway.dev/";
+        const ENDPOINT_RENDERHTML = "render-html";
+
+        fetch(API_URL + ENDPOINT_RENDERHTML, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then((htmlResponse) => {
+            $("body").html(htmlResponse);
+          })
+          .catch((error) => {
+            console.error(
+              "There has been a problem with your fetch operation:",
+              error
+            );
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="html-container"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // You can call buscarHTML from the console with the desired data
+      });
+    </script>
+  </body>
+</html>

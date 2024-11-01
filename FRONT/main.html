@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Massuh Imóveis - Lista de Clientes e Imóveis</title>
+    <!-- nao salvar cache -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!--material icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--css-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script type="module" src="assets/js/app.js"></script>
+    <!--jquery-->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Adicione Select2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <!-- Adicione Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      let dados = [];
+    </script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="https://img.apresenta.me/MzYxM7VNVkvPK9BLNUs2iS9KLcnPT4vPT8-PiU9NT8zNjC8pza9MzNFPz0zLy0_2zVQztS0GAA.png" alt="Logo">
+      </div>
+      <aside>
+        <ul>
+          <li id="aside-clientes">
+            <span class="material-icons">people</span>
+            <a href="#" style="cursor: not-allowed;" >Aguarde... carregando</a>
+          </li>
+          <li class="active" id="aside-imoveis">
+            <span class="material-icons">business</span>
+            <a href="#">Lista de Imóveis</a>
+          </li>
+        </ul>
+      </aside>      
+      <div>
+        <ul>
+          <li
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: 1rem;
+              justify-content: flex-end;
+            "
+            id="themeToggle"
+          >
+            <!--toogle dark mode material icons-->
+            <span>Dia/Noite</span>
+            <span class="material-icons">dark_mode</span>
+          </li>
+          <li
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: 1rem;
+              justify-content: flex-end;
+            "
+            id="logoutButton"
+          >
+            <span>Desconectar</span>
+            <span class="material-icons">logout</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section id="main-section">
+        <!-- filtros da página principal na lista de clientes-->
+        <div class="header-container">
+          <div id="filters-main">
+            <h3 id="titulo-pagina" hidden></h3>
+            <span id="open-filters"
+            ><span class="material-icons">search</span>Filtros</span>
+            <div id="filtersMainPage" class="flex-filters" style="width: 100%;">
+              <div class="filter-container" data-field-type="categorical" data-variavel="SituacaoGeral">
+                <label>Situação Geral</label>
+                <div class="field-value" data-index="300">
+                  <select multiple=""></select>
+                </div>
+              </div>
+            
+              <div class="filter-container" data-field-type="categorical" data-variavel="ATENDIMENTO">
+                <label>Atendimento</label>
+                <div class="field-value" data-index="400">
+                  <select multiple="">
+                  </select>
+                </div>
+              </div>
+            
+              <div class="filter-container" data-field-type="categorical" data-variavel="CAPTACAO">
+                <label>Captação</label>
+                <div class="field-value" data-index="6">
+                  <select multiple="">
+                  </select>
+                </div>
+              </div>
+            
+              <button id="apply-filters-main">Aplicar Filtros</button>
+            </div>
+          </div>
+        </div>
+        <!-- Content will be dynamically loaded here -->
+        <div class="container">
+
+        
+          <ul class="lista">
+            <!-- Client cards will be appended here -->
+          </ul>
+          <div id="pagination-controls"></div>
+        </div>
+      
+          <!-- Controles de paginação -->
+          <div
+            id="loading-animation"
+            class="loading-animation"
+            style="display: none"
+          >
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Sidebar for filters -->
+    <div id="filters-sidebar" class="sidebar" style="width: 100%">
+      <div class="sidebar-content">
+          <div class="header-filters">
+            <h2>Filtros</h2>
+            <span class="close">×</span>
+          
+          </div>
+          <button type="button" id="limparFiltro">Limpar filtros</button>
+        <br />
+        <br />
+        <div id="dynamic-filters"></div>
+        <button id="apply-filters">Aplicar Filtros</button>
+      </div>
+    </div>
+
+    <div class="loadingScreen">
+      <div class="loadingScreen-content">
+        <div class="loadingScreen-spinner"></div>
+        <h2>Carregando...</h2>
+      </div>
+    </div>
+
+    <div class="formularios">
+      <div class="formulariosHeader">
+        <h2>Formulário de Cadastro</h2>
+        <span class="closeFormularios">×</span>
+      </div>
+      <div class="formulariosContent">
+        <form id="formulario">
+          <div id="html-container"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="recomendacaoView">
+      <div>
+        <div style="display: flex; align-items: center; gap: 4rem">
+          <div style="display: flex; align-items: center; gap: 1rem" id="esconderLeadRecomendacao">
+            <span class="material-icons" 
+              >assignment_return</span
+            >
+            <p>Dados do cliente</p>
+          </div>
+        </div>
+        <span class="closeRecomendacao">×</span>
+      </div>
+      <div>
+        <div id="dadosLeadRecomendacao">
+          <div>
+            <span class="material-icons" id="editarLeadRecomendacao">edit</span>
+          </div>
+          <h4 data-recomendacaoCliente="Nome"></h4>
+          <ul >
+            <li data-recomendacaoCliente="ACIMA_OU_ABAIXO"></li>
+            <li data-recomendacaoCliente="ANDAR"></li>
+            <li data-recomendacaoCliente="AREA_DE_LAZER"></li>
+            <li data-recomendacaoCliente="ATENDIMENTO"></li>
+            <li data-recomendacaoCliente="ATENDIMENTO_SECUNDAR"></li>
+            <li data-recomendacaoCliente="AberturaPraAbrirLeque"></li>
+            <li data-recomendacaoCliente="AberturaPraLigacao"></li>
+            <li data-recomendacaoCliente="BAIRROS"></li>
+            <li data-recomendacaoCliente="BANHEIROS"></li>
+            <li data-recomendacaoCliente="CAPTACAO"></li>
+            <li data-recomendacaoCliente="DATA_HORA_OU_DUVIDA"></li>
+            <li data-recomendacaoCliente="DCE"></li>
+            <li data-recomendacaoCliente="ELEVADOR"></li>
+            <li data-recomendacaoCliente="ENQUADRAMENTO"></li>
+            <li data-recomendacaoCliente="EXIG_NAO_PODE_FALTAR"></li>
+            <li data-recomendacaoCliente="FACHADA"></li>
+            <li data-recomendacaoCliente="FEEDBACK_INDIVIDUAL"></li>
+            <li data-recomendacaoCliente="FILTRO_DO_CLIENTE"></li>
+            <li data-recomendacaoCliente="FORMA_DE_PAGAMENTO"></li>
+            <li data-recomendacaoCliente="FeedbackNegativo"></li>
+            <li data-recomendacaoCliente="FeedbackPositivo"></li>
+            <li data-recomendacaoCliente="GAS_ENCANADO"></li>
+            <li data-recomendacaoCliente="HIDRAULICA_E_ELETRIC"></li>
+            <li data-recomendacaoCliente="METRAGEM_MINIMA"></li>
+            <li data-recomendacaoCliente="MOBILIADO"></li>
+            <li data-recomendacaoCliente="OBS_SOBRE_O_BAIRRO"></li>
+            <li data-recomendacaoCliente="OBS_SOBRE_O_VALOR"></li>
+            <li data-recomendacaoCliente="PISO"></li>
+            <li data-recomendacaoCliente="POSICAO_PREDIO"></li>
+            <li data-recomendacaoCliente="POSICAO_SOLAR"></li>
+            <li data-recomendacaoCliente="PREF_SE_TIVER_MELHOR"></li>
+            <li data-recomendacaoCliente="PreferenciaDeHorariosDeVisita"></li>
+            <li data-recomendacaoCliente="QUARTOS"></li>
+            <li data-recomendacaoCliente="REFORMA"></li>
+            <li data-recomendacaoCliente="REGISTRO_PORTAIS"></li>
+            <li data-recomendacaoCliente="Respondendo"></li>
+            <li data-recomendacaoCliente="SUITE"></li>
+            <li data-recomendacaoCliente="SituacaoGeral"></li>
+            <li data-recomendacaoCliente="TEMPO_SEM_CONTATO"></li>
+            <li data-recomendacaoCliente="TIPOLOGIA"></li>
+            <li data-recomendacaoCliente="TIPO_DE_COZINHA"></li>
+            <li data-recomendacaoCliente="Telefone"></li>
+            <li data-recomendacaoCliente="VAGA_DE_GARAGEM"></li>
+            <li data-recomendacaoCliente="VALOR_DO_CONDOMINIO"></li>
+            <li data-recomendacaoCliente="VALOR_DO_MT2"></li>
+            <li data-recomendacaoCliente="VALOR_LIMITE"></li>
+            <li data-recomendacaoCliente="VARANDA"></li>
+            <li data-recomendacaoCliente="VAZADO"></li>
+            <li data-recomendacaoCliente="VISTA"></li>
+            <li data-recomendacaoCliente="VisitasFeitas"></li>
+          </ul>
+        </div>
+        <div class="recomendacaoViewImovel2">
+          
+        </div>
+          <div id="cardImovel-recomendacao">
+            <div id="tabelaComparacao2"></div>
+              <!-- Add pagination controls here for the property recommendations -->
+              <div id="recomendacao-pagination-controls"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recomendacaoViewImovel">
+      <div id="cardImovel-recomendacao">
+        <h3>Recomendação de Imóveis - Comparativo</h3>
+        <span class="closeRecomendacaoViewImovel">x</span>
+        <div>
+          <h3 id="tituloImovel-recomendacao">teste</h3>
+          <div>
+            <p id="metragemImovel-recomendacao">testeP1</p>
+            <p id="bairroImovel-recomendacao">testeP2</p>
+            <p id="valorImovel-recomendacao">testeP2</p>
+          </div>
+        </div>
+      </div>
+      <div id="tabelaComparacao"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        const closeFilters = document.querySelector(".close");
+        // aguardar closeFilters ser carregado
+        setTimeout(() => {
+          closeFilters.addEventListener("click", function () {
+            document.getElementById("filters-sidebar").style.width = "0";
+          });
+        }, 1000);
+
+        // fecha o sidebar de filtros quando carrega a tela
+        document.getElementById("filters-sidebar").style.width = "0";
+      });
+      // Função para manipular o comportamento do dropdown de múltipla seleção
+      function selectAll(field_key) {
+        var checkboxes = document.getElementsByName(field_key);
+        for (var checkbox of checkboxes) {
+          checkbox.checked = document.getElementById(
+            field_key + "_all"
+          ).checked;
+        }
+      }
+
+      function toggleOtherField(field_key) {
+        var otherField = document.getElementById(field_key + "_other");
+        otherField.style.display =
+          otherField.style.display === "none" ? "block" : "none";
+      }
+    </script>
+
+    <script type="module">
+      import { authStateListener } from "./assets/js/firebase/login.js";
+
+      authStateListener((user) => {
+        if (!user) {
+          // Redireciona para login.html se não estiver autenticado
+          window.location.href = "index.html";
+        }
+      });
+    </script>
+
+    <script type="module">
+      import { auth } from "./assets/js/firebase/core.js";
+      import { signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+
+      // Função para deslogar o usuário
+      document.getElementById("logoutButton").addEventListener("click", () => {
+        signOut(auth)
+          .then(() => {
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.error("Erro ao deslogar o usuário:", error);
+          });
+      });
+    </script>
+  </body>
+</html>

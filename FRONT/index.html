@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Massuh Imóveis - Login</title>
+    <!-- nao salvar cache -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
+    <!-- Script do login -->
+    <script type="module" src="assets/js/firebase/login.js"></script>
+  </head>
+  <body>
+    <form id="loginForm">
+      <h3>Massuh Imóveis</h3>
+
+      <label for="username">E-mail</label>
+      <input type="text" placeholder="Email" id="username" />
+
+      <label for="password">Senha</label>
+      <input type="password" placeholder="Password" id="password" />
+
+      <button type="submit">Entrar</button>
+    </form>
+  </body>
+</html>

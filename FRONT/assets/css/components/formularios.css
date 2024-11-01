@@ -1,0 +1,294 @@
+.formularios {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  z-index: 8888;
+  overflow-y: scroll;
+}
+
+.formulariosHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.closeFormularios {
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s;
+  font-size: 1.5rem;
+}
+
+.closeFormularios:hover {
+  color: var(--primary-color);
+}
+
+.formulariosContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 4rem);
+  padding: 2rem;
+  background-color: var(--background-color);
+  overflow-y: scroll;
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 12rem;
+  background-color: var(--background-color);
+}
+
+@media screen and (max-width: 768px) {
+  #formulario {
+    padding: 1rem;
+  }
+}
+
+/* Styles for the form fields */
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.field-container label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+#formulario input,
+#formulario select,
+#formulario textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: #fefefe;
+  color: var(--input-text-color);
+}
+
+/* New styles for boolean (checkbox) fields */
+.field-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.field-container label.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* New styles for radio buttons */
+.field-value label {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.field-value input[type="radio"] {
+  margin-right: 5px;
+}
+
+.field-value[data-index] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Styling for the radio buttons to make them more visually appealing */
+.field-value input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: var(--primary-color);
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid var(--primary-color);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+.field-value input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transition: transform 0.1s ease-in-out;
+  box-shadow: inset 1em 1em var(--primary-color);
+  transform: scale(0);
+}
+
+.field-value input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.field-value input[type="radio"]:disabled {
+  border-color: var(--disabled-color);
+}
+
+.field-value input[type="radio"]:disabled::before {
+  box-shadow: inset 1em 1em var(--disabled-color);
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Styles for the Save button */
+#salvar {
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 4rem;
+  position: fixed;
+  bottom: 1rem;
+}
+
+#salvarAnuncio {
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 4rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 23rem;
+}
+
+#salvar:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+#salvarAnuncio:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.obj-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  display: block !important;
+  margin-bottom: 5px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropbtn {
+  background-color: #ffffff; /* Light background for a clean look */
+  color: #333333; /* Darker text for better readability */
+  padding: 12px 16px; /* Adjusted padding for better spacing */
+  font-size: 16px;
+  border: 1px solid #dddddd; /* Subtle border for definition */
+  border-radius: 5px; /* Rounded corners for a modern feel */
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+  position: relative;
+}
+
+.dropbtn:hover {
+  background-color: #f1f1f1; /* Slightly darker on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.dropbtn:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4); /* Custom focus outline */
+}
+
+.dropdown-content {
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  visibility: hidden; /* Hide the dropdown content */
+  opacity: 0; /* Make it fully transparent */
+  transition: visibility 0.3s, opacity 0.3s; /* Smooth transition for visibility and opacity */
+  position: absolute; /* Position it absolutely relative to the dropdown */
+  top: 100%; /* Position it below the dropdown button */
+  width: 100%;
+  max-height: 10rem; /* Optional: Limit height if there are many options */
+  overflow-y: auto; /* Scroll if content exceeds max-height */
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  /* position: relative; */
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+.dropdown-content input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.dropdown-content input[type="checkbox"] + br {
+  display: none;
+}
+
+.dropdown-content label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dropdown-content input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.dropdown-content .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}

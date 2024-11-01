@@ -1,0 +1,6 @@
+pandas
+google-cloud
+google-auth
+requests
+pandas_gbq
+os

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burocrático e Pós Venda</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/bpv.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="https://img.apresenta.me/MzYxM7VNVkvPK9BLNUs2iS9KLcnPT4vPT8-PiU9NT8zNjC8pza9MzNFPz0zLy0_2zVQztS0GAA.png"
+          alt="Logo"
+        />
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="theme-toggle">
+          <img src="../img/moon-icon.png" alt="" /> <span>Dia/Noite</span>
+        </a>
+        <a href="#" class="logout" id="logoutButton">
+          <img src="../img/logout-icon.png" alt="" /> <span>Desconectar</span>
+        </a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>TICKET'S</h1>
+      <button id="adicionarNovaVenda">Adicionar Novo Ticket</button>
+
+      <div id="vendasContainer">
+        <!-- Remova as caixas de exemplo daqui -->
+      </div>
+    </div>
+
+    <!-- Adicione este código para o popup -->
+    <div id="popupNovaVenda" class="popup">
+      <div class="popup-content">
+        <h2>Adicionar Novo Ticket</h2>
+        <form id="formNovaVenda">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecione o tipo</option>
+            <option value="VENDA">VENDA</option>
+            <option value="VISITA">VISITA</option>
+          </select>
+
+          <div class="campo-row">
+            <div class="campo venda visita">
+              <label for="endereco">Endereço:</label>
+              <input type="text" id="endereco" name="endereco" required />
+            </div>
+            <div class="campo venda visita">
+              <label for="vgv">VGV:</label>
+              <input type="text" id="vgv" name="vgv" required />
+            </div>
+          </div>
+
+          <div class="campo-row">
+            <div class="campo venda visita">
+              <label for="corretorVendedor">Corretor Vendedor:</label>
+              <input
+                type="text"
+                id="corretorVendedor"
+                name="corretorVendedor"
+                required
+              />
+            </div>
+            <div class="campo venda visita">
+              <label for="corretorCaptador">Corretor Captador:</label>
+              <input
+                type="text"
+                id="corretorCaptador"
+                name="corretorCaptador"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="campo-row">
+            <div class="campo venda">
+              <label for="numeroVendedores">Número de Vendedores:</label>
+              <input
+                type="number"
+                id="numeroVendedores"
+                name="numeroVendedores"
+              />
+            </div>
+            <div class="campo venda">
+              <label for="numeroCompradores">Número de Compradores:</label>
+              <input
+                type="number"
+                id="numeroCompradores"
+                name="numeroCompradores"
+              />
+            </div>
+          </div>
+
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Adicione este código para o popup de detalhes -->
+    <div id="popupDetalhes" class="popup">
+      <div class="popup-content">
+        <h2>Documentação</h2>
+        <div id="detalhesConteudo"></div>
+
+        <h3 id="imovelHeader" style="cursor: pointer">IMÓVEL</h3>
+        <div id="documentosImovel" style="display: none">
+          <div class="documento">
+            <label>CERTIDÃO DE ÔNUS DO IMÓVEL</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+          <div class="documento">
+            <label>NADA CONSTA DE IPTU</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+          <div class="documento">
+            <label>NADA CONSTA DE CONDOMÍNIO</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+        </div>
+
+        <h3 id="minutasHeader" style="cursor: pointer">MINUTAS</h3>
+        <div id="documentosMinutas" style="display: none">
+          <div class="documento">
+            <label>MINUTA DE COMPRA E VENDA</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+          <div class="documento">
+            <label
+              >MINUTA DE ESCRITURA / CONTRATO PARTICULAR COM FORÇA DE
+              ESCRITURA</label
+            >
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+          <div class="documento">
+            <label>MINUTA DE INTERMEDIAÇÃO</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+          <div class="documento">
+            <label>MINUTA DE ENTREGA DE CHAVES</label>
+            <input type="file" />
+            <p class="pendente">Documento pendente</p>
+          </div>
+        </div>
+
+        <button id="fecharDetalhes">Fechar</button>
+      </div>
+    </div>
+
+    <script src="assets/js/bpv.js"></script>
+  </body>
+</html>

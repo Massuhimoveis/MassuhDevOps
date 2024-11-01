@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Home</title>
+    <link rel="stylesheet" href="css/Home.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="https://img.apresenta.me/MzYxM7VNVkvPK9BLNUs2iS9KLcnPT4vPT8-PiU9NT8zNjC8pza9MzNFPz0zLy0_2zVQztS0GAA.png"
+          alt="Logo"
+        />
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="theme-toggle">
+          <img src="../img/moon-icon.png" alt="" /> <span>Dia/Noite</span>
+        </a>
+        <a href="#" class="logout" id="logoutButton">
+          <img src="../img/logout-icon.png" alt="" /> <span>Desconectar</span>
+        </a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Dashboard</h1>
+
+      <div class="metrics">
+        <div class="metric-card">
+          <h2>META INDIVIDUAL</h2>
+          <p class="value">R$ 000.000</p>
+          <p class="description">Meta mensal de vendas</p>
+        </div>
+        <div class="metric-card">
+          <h2>META DA EMPRESA</h2>
+          <p class="value">R$ 0.000.000</p>
+          <p class="description">Meta mensal total</p>
+        </div>
+        <div class="metric-card">
+          <h2>VGV ALCANÇADO</h2>
+          <p class="value">R$ 0.000.000</p>
+          <p class="description">Volume Geral de Vendas</p>
+        </div>
+      </div>
+
+      <h2>Menu Principal</h2>
+
+      <div class="menu-items">
+        <a href="../main.html#crm-section" class="menu-card" id="crm-card">
+          <img src="img/crm-icon-red.png" alt="CRM" class="menu-icon" />
+          <div class="menu-content">
+            <h3>CRM</h3>
+            <p>Gerenciamento de clientes e leads</p>
+          </div>
+        </a>
+        <a href="../bpv.html" class="menu-card">
+          <img
+            src="img/bureaucratic-icon-red.png"
+            alt="Burocrático e Pós Venda"
+            class="menu-icon"
+          />
+          <div class="menu-content">
+            <h3>TICKET'S</h3>
+            <p>Gestão de documentos e acompanhamento pós-venda</p>
+          </div>
+        </a>
+        <div class="menu-card">
+          <img
+            src="img/calendar-icon-red.png"
+            alt="Calendário"
+            class="menu-icon"
+          />
+          <div class="menu-content">
+            <h3>CALENDÁRIO</h3>
+            <p>Agendamento de visitas e compromissos</p>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img
+            src="img/reports-icon-red.png"
+            alt="Relatórios"
+            class="menu-icon"
+          />
+          <div class="menu-content">
+            <h3>RELATÓRIOS</h3>
+            <p>Análise de desempenho e estatísticas</p>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img
+            src="img/communication-icon-red.png"
+            alt="Canal de Comunicação"
+            class="menu-icon"
+          />
+          <div class="menu-content">
+            <h3>CANAL DE COMUNICAÇÃO</h3>
+            <p>Comunicação interna e externa</p>
+            <p>‎</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/Home.js"></script>
+    <script src="js/logout.js"></script>
+    <script>
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          window.location.href = "../../login.html"; // Subindo dois níveis na hierarquia
+        });
+    </script>
+  </body>
+</html>

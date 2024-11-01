@@ -1,0 +1,167 @@
+@import url(style.css);
+@import url(components/navbar.css);
+@import url(components/aside.css);
+@import url(components/filtros.css);
+@import url(components/cardsImoveis.css);
+@import url(components/cardsClientes.css);
+@import url(components/paginacao.css);
+@import url(components/formularios.css);
+@import url(components/recomendacaoView.css);
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+#main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: scroll;
+  padding: 0 2rem;
+}
+
+#main-section .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%; /* Ensure all direct children stay within the width of the parent */
+  box-sizing: border-box; /* Same for child elements */
+  gap: 1rem;
+}
+
+.container {
+  top: 2rem;
+  position: relative;
+}
+
+#main-section .header-container #open-filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  color: var(--disabled-color);
+  transition: color 0.3s;
+  align-self: self-start;
+  position: relative;
+  top: 2rem;
+}
+
+#main-section .header-container #open-filters:hover {
+  color: var(--text-color);
+}
+
+#main-section > .container .lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+#main-section > .header-container .lista {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-container {
+  flex: 1 1 calc(25% - 1rem);
+  min-width: calc(25% - 1rem);
+  box-sizing: border-box;
+  max-width: 200px;
+}
+
+#filters-main {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 92%;
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--background-color);
+}
+
+nav {
+  background-color: #fd0000;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a,
+nav span,
+nav .material-icons,
+nav input::placeholder,
+nav .btn-neutral-branco {
+  color: white !important;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover,
+nav span:hover,
+nav .material-icons:hover,
+nav .btn-neutral-branco:hover {
+  opacity: 0.8;
+}
+
+nav .search-bar input {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+nav .search-bar input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 0.6rem 0.8rem 0.6rem 0.6rem;
+  border-radius: 4px;
+}
+
+nav .logo img {
+  height: 50px; /* Aumentado de 40px para 50px */
+  width: auto;
+  object-fit: contain;
+}
+
+nav .icons {
+  display: flex;
+  gap: 1rem;
+}
+
+nav .icons a {
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    padding: 1rem;
+    padding-top: 2rem;
+  }
+  #main-section {
+    padding: 0 1rem;
+  }
+  #main-section .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  #titulo-pagina {
+    display: none;
+  }
+}

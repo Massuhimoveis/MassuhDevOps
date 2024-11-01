@@ -1,0 +1,244 @@
+---
+swagger: "2.0"
+info:
+  title: Massuh backend API
+  description: Sample API on API Gateway with a Google Cloud Functions backend
+  version: 1.0.0
+host: massuh-api-3hnyq5c2s2o41.apigateway.massuh-420617.cloud.goog
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /customers:
+    get:
+      summary: Retorna lista de clientes da Massuh Imoveis se chamado sem nenhum parâmetro e filtrado se passado o parametro customer_id
+      operationId: customers
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/customers
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsCustomers
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/customers
+      responses:
+        "200":
+          description: A successful response
+  /properties:
+    get:
+      summary: Retorna lista de Imóveis da Massuh se chamado sem nenhum parâmetro e filtrado se passado o parametro url_imovel OU bairro
+      operationId: properties
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/properties
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsProperties
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/properties
+      responses:
+        "200":
+          description: A successful response
+  /list-fields:
+    get:
+      summary: Retorna lista de Colunas e Opções de Colunas e Filtros
+      operationId: list-fields
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/list-fields
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsListFields
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/list-fields
+      responses:
+        "200":
+          description: A successful response
+  /list-neighborhoods:
+    get:
+      summary: Retorna lista de Cidades e Bairros com quantidade de anuncio de imoveis
+      operationId: list-neighborhoods
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/list-neighborhoods
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsListNeighborhoods
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/list-neighborhoods
+      responses:
+        "200":
+          description: A successful response
+  /rank-properties:
+    get:
+      summary: Retorna lista de Imóveis da Massuh rankeados pela proximidade do imóvel com os parâmetros de filtro passados
+      operationId: rankProperties
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/rank_properties
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsRankProperties
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/rank_properties
+      responses:
+        "200":
+          description: A successful response
+  /recommendations:
+    get:
+      summary: Retorna lista de Imóveis da Massuh rankeados pela proximidade do imóvel com os parâmetros de filtro passados
+      operationId: recommendations
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/recommendations
+        deadline: 90
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsRecommendations
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/recommendations
+      responses:
+        "200":
+          description: A successful response
+  /customer-edition:
+    post:
+      summary: Atualiza um cliente a partir dos parâmetros customer_id, field_label, value, edited_by
+      operationId: customer-edition
+      consumes:
+        - application/json
+      produces:
+        - application/text
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/edit-customers
+        deadline: 90
+      parameters:
+        - in: body
+          name: body
+          description: Edit Customer field
+          required: true
+          schema:
+            type: object
+            properties:
+              customer_id:
+                type: string
+              field_label:
+                type: string
+              value:
+                type: string
+              edited_by:
+                type: string
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsCustomerEdit
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/edit-customers
+      responses:
+        "200":
+          description: A successful response
+  /render-html:
+    post:
+      summary: Renderiza o html de formulário de um objeto válido
+      operationId: render-html
+      consumes:
+        - application/json
+      produces:
+        - application/text
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/render-forms
+        deadline: 90
+      parameters:
+        - in: body
+          name: body
+          description: Render forms
+          required: true
+          schema:
+            type: object
+            properties:
+              template:
+                type: string
+              obj:
+                type: object
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsRenderHtml
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/render-forms
+      responses:
+        "200":
+          description: A successful response
+  /properties-edition:
+    post:
+      summary: Atualiza um imóvel a partir dos parâmetros da lista de objetos contendo url_imovel, field_label, value, edited_by
+      operationId: properties-edition
+      consumes:
+        - application/json
+      produces:
+        - application/text
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/edit-properties
+        deadline: 90
+      parameters:
+        - in: body
+          name: body
+          description: Lista de objetos para editar campo do imovel
+          required: true
+          schema:
+            type: object
+            properties:
+              items:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    imovel_id:
+                      type: string
+                    field_label:
+                      type: string
+                    value:
+                      type: string
+                    edited_by:
+                      type: string
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
+    options:
+      operationId: corsPropertiesEdit
+      x-google-backend:
+        address: https://us-central1-massuh-420617.cloudfunctions.net/edit-properties
+      responses:
+        "200":
+          description: A successful response
